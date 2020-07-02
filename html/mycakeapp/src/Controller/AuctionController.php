@@ -109,7 +109,7 @@ class AuctionController extends AuctionBaseController
 				case "png":
 					break;
 				default:
-					$this->Flash->error(__('画像を選択してください。'));
+					$this->Flash->error(__('画像を選択してください。画像は拡張子がgif, jpeg, jpg または png のいずれかになります。'));
 					return $this->redirect(['action' => 'add']);
 					break;
 			}
