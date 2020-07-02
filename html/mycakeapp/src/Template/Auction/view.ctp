@@ -30,7 +30,7 @@
 </tr>
 <tr>
 	<th scope="row">終了までカウントダウン</th>
-	<td><span id="day"></span>日<span id="hour"></span>時間<span id="min"></span>分<span id="sec"></span>秒</td>
+	<td><span id="over">終了</span></td>
 </tr>
 
 </table>
@@ -95,6 +95,7 @@
 <script type="text/javascript">
 
 var toend = '<?php echo $countdown; ?>';
+var is_finished = '<?php echo json_encode($biditem->finished); ?>';
 
 var countdown = function(due) {
 	var now = new Date();
@@ -119,10 +120,9 @@ var recalc = function() {
 	}
 
 	var counter = countdown(goal);
-	document.getElementById('day').textContent = counter[0];
-	document.getElementById('hour').textContent = counter[1];
-	document.getElementById('min').textContent = counter[2];
-	document.getElementById('sec').textContent = counter[3];
+
+	document.getElementById('over').textContent = counter[0]+'日'+counter[1]+'時'+counter[2]+'分'+counter[3]+'秒';
+
 	var counting = setTimeout(recalc, 1000);
 }
 recalc();
