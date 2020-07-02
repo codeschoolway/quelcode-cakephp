@@ -109,19 +109,21 @@ var countdown = function(due) {
 	return count;
 }
 
-var goal = new Date(toend);
-
 var recalc = function() {
+	var goal = new Date(toend);
+	var rightnow = new Date();
+
+	if(rightnow.getTime() >= goal.getTime()) {
+		clearTimeout(counting);
+		return;
+	}
+
 	var counter = countdown(goal);
 	document.getElementById('day').textContent = counter[0];
 	document.getElementById('hour').textContent = counter[1];
 	document.getElementById('min').textContent = counter[2];
 	document.getElementById('sec').textContent = counter[3];
-	refresh();
-}
-
-var refresh = function() {
-	setTimeout(recalc, 1000);
+	var counting = setTimeout(recalc, 1000);
 }
 recalc();
 </script>
