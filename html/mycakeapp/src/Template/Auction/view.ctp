@@ -95,7 +95,6 @@
 <script type="text/javascript">
 
 var toend = '<?php echo $countdown; ?>';
-var is_finished = '<?php echo json_encode($biditem->finished); ?>';
 
 var countdown = function(due) {
 	var now = new Date();
