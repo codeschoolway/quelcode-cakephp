@@ -115,10 +115,13 @@ class AuctionController extends AuctionBaseController
 			}
 
 			// 画像をアップロード
-			$image_path = '../webroot/img/auction/' . date("YmdHis") . $image_file['name'];
+			$image_name = date("YmdHis") . $image_file['name'];
+
+			$image_path = WWW_ROOT . 'img/auction/' . $image_name;
+
 			move_uploaded_file($image_file['tmp_name'], $image_path);
 
-			$biditem['image_path'] = date("YmdHis") . $image_file['name'];
+			$biditem['image_path'] = $image_name;
 
 			// $biditemを保存する
 			if ($this->Biditems->save($biditem)) {
