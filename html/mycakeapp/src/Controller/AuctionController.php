@@ -69,6 +69,16 @@ class AuctionController extends AuctionBaseController
 			}
 			// Biditemのbidinfoに$bidinfoを設定
 			$biditem->bidinfo = $bidinfo;		
+		} elseif ($biditem->finished == 0){
+			$endtime = (array)$biditem->endtime;
+
+			$date = new \DateTime($endtime['date']);
+			$current  = new \DateTime('now');
+			
+			$count = $current->diff($date);
+			$countdown = $endtime['date'];
+
+			$this->set('countdown', $countdown);
 		}
 		// Bidrequestsからbiditem_idが$idのものを取得
 		$bidrequests = $this->Bidrequests->find('all', [
@@ -88,6 +98,35 @@ class AuctionController extends AuctionBaseController
 		if ($this->request->is('post')) {
 			// $biditemにフォームの送信内容を反映
 			$biditem = $this->Biditems->patchEntity($biditem, $this->request->getData());
+			$image_file = $this->request->getData('image');
+			
+			// 画像であるか確認
+			$path_info = pathinfo($image_file['name']);
+			switch($path_info['extension']) {
+				case "gif":
+				case "jpeg":
+				case "jpg":
+				case "png":
+				case "GIF":
+				case "JPEG":
+				case "JPG":
+				case "PNG":
+					break;
+				default:
+					$this->Flash->error(__('画像を選択してください。画像は拡張子がgif, jpeg, jpg または png のいずれかになります。'));
+					return $this->redirect(['action' => 'add']);
+					break;
+			}
+
+			// 画像をアップロード
+			$image_name = date("YmdHis") . $image_file['name'];
+
+			$image_path = WWW_ROOT . 'img/auction/' . $image_name;
+
+			move_uploaded_file($image_file['tmp_name'], $image_path);
+
+			$biditem['image_path'] = $image_name;
+
 			// $biditemを保存する
 			if ($this->Biditems->save($biditem)) {
 				// 成功時のメッセージ
