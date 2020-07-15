@@ -246,7 +246,7 @@ class AuctionController extends AuctionBaseController
 					return $this->redirect(['action' => 'contact/'.$biditem_id]);
 				}
 				// 失敗時
-				$this->Flash->error(__('bbbbbbbb送信に失敗しました。もう一度入力してください。'));
+				$this->Flash->error(__('送信に失敗しました。もう一度入力してください。'));
 			}
 		}
 
