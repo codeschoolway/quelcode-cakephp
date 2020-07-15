@@ -257,7 +257,7 @@ class AuctionController extends AuctionBaseController
 
 	public function rating($user_id = null)
 	{
-		$user = $this->Users->findById($user_id)->toArray();
+		$user = $this->Users->findById($user_id)->first();
 
 		$user_ratings = $this->Ratings->find('all')->Where(['to_user_id'=>$user_id])->toArray();
 

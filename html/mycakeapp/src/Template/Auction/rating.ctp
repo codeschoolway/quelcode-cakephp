@@ -1,4 +1,4 @@
-<h2><?=h($user[0]->username)?>の評価</h2>
+<h2><?=h($user->username)?>の評価</h2>
 
 <h3>平均点数：<?= h(number_format($star_score, 1)) ?></h3>
 
