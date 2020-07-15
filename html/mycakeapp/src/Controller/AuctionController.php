@@ -272,7 +272,6 @@ class AuctionController extends AuctionBaseController
 		$star_count = count($stars);
 		$star_score = $star_sum / $star_count;
 
-		// 
 		$ratings = $this->paginate('Ratings', [
 			'conditions'=>['Ratings.to_user_id'=>$user_id],
 			'contain' => ['Users', 'Biditems'],
