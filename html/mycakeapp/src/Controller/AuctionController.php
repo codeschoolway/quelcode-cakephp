@@ -198,13 +198,14 @@ class AuctionController extends AuctionBaseController
 			}
 		}
 
-		$bidinfo_find_bid = $this->Bidinfo->find('all')->where(['biditem_id'=>$biditem_id])->toArray();
+		$bidinfo_find_bid = $this->Bidinfo->find()->where(['biditem_id'=>$biditem_id])->first();
+
 		$delivery = $this->Deliveries->newEntity();
 		$rating = $this->Ratings->newEntity();
 
 		// user_idが同じなら落札者、異なるなら出品者
 		// 落札者の場合
-		if ($bidinfo_find_bid[0]['user_id'] === $this->Auth->user('id')) {
+		if ($bidinfo_find_bid['user_id'] === $this->Auth->user('id')) {
 			$is_buyer = true;
 			
 			// POST送信だったら
