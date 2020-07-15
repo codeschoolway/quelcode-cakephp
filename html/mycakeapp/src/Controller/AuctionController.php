@@ -258,7 +258,7 @@ class AuctionController extends AuctionBaseController
 	{
 		$user = $this->Users->findById($user_id)->toArray();
 
-		$user_ratings = $this->Ratings->find('all')->Where(['from_user_id'=>$user_id])->toArray();
+		$user_ratings = $this->Ratings->find('all')->Where(['to_user_id'=>$user_id])->toArray();
 
 		// 評価されていない場合
 		if (empty($user_ratings)) {
