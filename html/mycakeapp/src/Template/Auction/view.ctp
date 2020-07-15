@@ -2,7 +2,7 @@
 <table class="vertical-table">
 <tr>
 	<th class="small" scope="row">出品者</th>
-	<td><?= $biditem->has('user') ? $biditem->user->username : '' ?></td>
+	<td><a href="<?=$this->Url->build(['action'=>'rating', $biditem->user_id]) ?>"><?= $biditem->has('user') ? $biditem->user->username : '' ?></a></td>
 </tr>
 <tr>
 	<th scope="row">商品名</th>
@@ -44,7 +44,7 @@
 		<th scope="col">落札日時</th>
 	</tr>
 	<tr>
-		<td><?= h($biditem->bidinfo->user->username) ?></td>
+		<td><a href="<?=$this->Url->build(['action'=>'rating', $biditem->bidinfo->user_id]) ?>"><?= h($biditem->bidinfo->user->username) ?></a></td>
 		<td><?= h($biditem->bidinfo->price) ?>円</td>
 		<td><?= h($biditem->endtime) ?></td>
 	</tr>

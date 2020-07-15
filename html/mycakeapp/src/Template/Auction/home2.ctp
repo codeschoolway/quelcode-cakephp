@@ -6,6 +6,7 @@
 			<th scope="col"><?= $this->Paginator->sort('id') ?></th>
 			<th class="main" scope="col"><?= $this->Paginator->sort('name') ?></th>
 			<th scope="col"><?= $this->Paginator->sort('created') ?></th>
+			<th scope="col" class="actions"><?= __('取引連絡') ?></th>
 			<th scope="col" class="actions"><?= __('Actions') ?></th>
 		</tr>
 	</thead>
@@ -15,6 +16,11 @@
 				<td><?= h($biditem->id) ?></td>
 				<td><?= h($biditem->name) ?></td>
 				<td><?= h($biditem->created) ?></td>
+				<td class="actions">
+					<?php if (!empty($biditem->bidinfo)) : ?>
+						<?= $this->Html->link(__('Contact'), ['action' => 'contact', $biditem->bidinfo->biditem_id]) ?>
+					<?php endif; ?>
+				</td>
 				<td class="actions">
 					<?php if (!empty($biditem->bidinfo)) : ?>
 						<?= $this->Html->link(__('View'), ['action' => 'msg', $biditem->bidinfo->id]) ?>

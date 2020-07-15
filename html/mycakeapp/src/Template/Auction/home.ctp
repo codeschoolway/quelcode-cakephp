@@ -3,18 +3,23 @@
 <table cellpadding="0" cellspacing="0">
 <thead>
 	<tr>
-		<th scope="col"><?= $this->Paginator->sort('id') ?></th>
+		<th scope="col"><?= $this->Paginator->sort('biditem_id') ?></th>
 		<th class="main" scope="col"><?= $this->Paginator->sort('name') ?></th>
 		<th scope="col"><?= $this->Paginator->sort('created') ?></th>
+		<th scope="col" class="actions"><?= __('取引連絡') ?></th>
 		<th scope="col" class="actions"><?= __('Actions') ?></th>
 	</tr>
 </thead>
 <tbody>
 	<?php foreach ($bidinfo as $info): ?>
 	<tr>
-		<td><?= h($info->id) ?></td>
+		<td><?= h($info->biditem_id) ?></td>
 		<td><?= h($info->biditem->name) ?></td>
 		<td><?= h($info->created) ?></td>
+		<!-- ?php $query_param = '?bid='.$info->biditem_id; ?> -->
+		<td class="actions">
+			<?= $this->Html->link(__('Contact'), ['action' => 'contact', $info->biditem_id]) ?>
+		</td>
 		<td class="actions">
 			<?= $this->Html->link(__('View'), ['action' => 'msg', $info->id]) ?>
 		</td>
@@ -33,4 +38,3 @@
 	</ul>
 </div>
 <h6><?= $this->Html->link(__('出品情報に移動 >>'), ['action' => 'home2']) ?></h6>
-
