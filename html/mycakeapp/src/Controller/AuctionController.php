@@ -282,7 +282,7 @@ class AuctionController extends AuctionBaseController
 		$this->set(compact('user', 'star_score', 'ratings'));
 	}
 
-	public function update()
+	public function updateIsShipped()
     {
 		if ($this->request->is('post')) {
 			$biditem_id = $this->request->query('biditem_id');
@@ -296,7 +296,7 @@ class AuctionController extends AuctionBaseController
 		}
 	}
 	
-	public function update2()
+	public function updateIsReceived()
     {
 		if ($this->request->is('post')) {
 			$biditem_id = $this->request->query('biditem_id');

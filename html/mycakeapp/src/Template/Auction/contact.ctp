@@ -32,7 +32,7 @@
 <?php if (!$is_received): ?>
     <h3>※商品が発送されました</h3>
     <p>商品が発送されました。商品を受け取ったら「商品を受け取りました」ボタンを押してください。</p>
-    <?= $this->Form->postButton('商品を受け取りました', ['controller' => 'Auction', 'action' => 'update2', 'biditem_id' => $bidinfo[0]["biditem_id"]]) ?>
+    <?= $this->Form->postButton('商品を受け取りました', ['controller' => 'Auction', 'action' => 'updateIsReceived', 'biditem_id' => $bidinfo[0]["biditem_id"]]) ?>
 <?php endif; ?>
 <?php endif; ?>
 
@@ -106,7 +106,7 @@
     <tr><td>電話：<?= h($delivery_findby_bid[0]->phone) ?></td></tr>
     </table>
     <p>商品発送後に「商品を発送しました」ボタンを押してください。</p>
-    <?= $this->Form->postButton('商品を発送しました', ['controller' => 'Auction', 'action' => 'update', 'biditem_id' => $bidinfo[0]["biditem_id"]]) ?>
+    <?= $this->Form->postButton('商品を発送しました', ['controller' => 'Auction', 'action' => 'updateIsShipped', 'biditem_id' => $bidinfo[0]["biditem_id"]]) ?>
 
     <?php else: ?>
         <?php if (!$is_received): ?>
