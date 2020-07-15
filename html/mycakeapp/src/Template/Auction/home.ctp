@@ -16,7 +16,6 @@
 		<td><?= h($info->biditem_id) ?></td>
 		<td><?= h($info->biditem->name) ?></td>
 		<td><?= h($info->created) ?></td>
-		<!-- ?php $query_param = '?bid='.$info->biditem_id; ?> -->
 		<td class="actions">
 			<?= $this->Html->link(__('Contact'), ['action' => 'contact', $info->biditem_id]) ?>
 		</td>
