@@ -286,7 +286,8 @@ class AuctionController extends AuctionBaseController
     {
 		if ($this->request->is('post')) {
 			$biditem_id = $this->request->query('biditem_id');
-			$is_updated = $this->Deliveries->updateAll(['is_shipped' => '1'], ['biditem_id' => $biditem_id]);
+			//$is_updated = $this->Deliveries->updateAll(['is_shipped' => '1'], ['biditem_id' => $biditem_id]);
+			$is_updated = $this->Deliveries->updateAll(['is_shipped' => '1', 'updated' => date('Y-m-d H:i:s')], ['biditem_id' => $biditem_id]);
 			if ($is_updated) {
 				$this->Flash->success(__('送信しました'));
 				return $this->redirect(['action' => 'contact/'.$biditem_id]);
@@ -300,7 +301,8 @@ class AuctionController extends AuctionBaseController
     {
 		if ($this->request->is('post')) {
 			$biditem_id = $this->request->query('biditem_id');
-			$is_updated = $this->Deliveries->updateAll(['is_received' => '1'], ['biditem_id' => $biditem_id]);
+			//$is_updated = $this->Deliveries->updateAll(['is_received' => '1'], ['biditem_id' => $biditem_id]);
+			$is_updated = $this->Deliveries->updateAll(['is_received' => '1', 'updated' => date('Y-m-d H:i:s')], ['biditem_id' => $biditem_id]);
 			if ($is_updated) {
 				$this->Flash->success(__('送信しました'));
 				return $this->redirect(['action' => 'contact/'.$biditem_id]);
