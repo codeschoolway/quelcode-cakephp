@@ -102,7 +102,7 @@
         <p>この住所に商品をお送りください。</p>
         <table>
         <tr><td>名前：<?= h($delivery_findby_bid[0]->name) ?></td></tr>
-        <tr><td>住所：<?= h($delivery_findby_bid[0]->address) ?></td></tr>
+        <tr><td>住所：<?= h($delivery_findby_bid[0]->address) ?></td></tr>
         <tr><td>電話：<?= h($delivery_findby_bid[0]->phone) ?></td></tr>
         </table>
         <p>商品発送後に「商品を発送しました」ボタンを押してください。</p>
